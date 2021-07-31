@@ -113,7 +113,7 @@
 			</case>
 		</rule>
 		<rule>
-			<rule-name>Be-Prompt-On-Actions</rule-name>
+			<rule-name>Be-Prompt-In-Actions</rule-name>
 			<device-type>Actuators</device-type>
 			<case>
 				<device>Smart-Robot</device>
