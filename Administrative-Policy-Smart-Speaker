@@ -56,11 +56,17 @@
 					<situation-dependencies>
 						<case>
 							<situation>crowded</situation>
-							<action>Tell-Jokes<with>Subtitles</with></action>	
+							<action-sequence>
+								<action>Play-Comedy-Video<with>Subtitles</with></action>	
+								<action>Tell-Jokes<with>Subtitles</with></action>	
+							</action-sequence>
 						</case>
 						<case>
 							<situation>vaccant</situation>
-							<action>Tell-Jokes<without>Subtitles</without></action>	
+							<action-sequence>
+								<action>Play-Comedy-Video<without>Subtitles</without></action>	
+								<action>Tell-Jokes<without>Subtitles</without></action>	
+							</action-sequence>
 						</case>
 					</situation-dependencies>
 				</context>
@@ -139,7 +145,7 @@
 				<context>
 					<situation-dependencies>
 						<case>
-							<situation>memory-overload</situation>
+							<situation>screen-touch<by>user</by></situation>
 							<action>Report-Owner</action>		
 						</case>
 					</situation-dependencies>
