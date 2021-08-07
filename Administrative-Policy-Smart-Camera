@@ -145,7 +145,7 @@
 				<context>
 					<situation-dependencies>
 						<case>
-							<situation>memory-overload</situation>
+							<situation>screen-touch<by>user</by></situation>
 							<action>Report-Owner</action>		
 						</case>
 					</situation-dependencies>
