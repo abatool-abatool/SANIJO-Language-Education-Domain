@@ -34,7 +34,7 @@
 							<action-sequence>
 								<action>High-Focus</action>
 								<action>Detect-Voice</action>
-								<action>Display-Message</action>
+								<action>Approve-Using-Text</action>
 							</action-sequence>
 						</case>
 						<case>
@@ -42,7 +42,7 @@
 							<action-sequence>
 								<action>Average-Focus</action>
 								<action>Detect-Voice</action>
-								<action>Speak-To-Come-In</action>
+								<action>Approve-Using-Voice</action>
 							</action-sequence>              
 						</case>
 					</situation-dependencies>
@@ -166,12 +166,12 @@
 				<context>
 					<situation-dependencies>
 						<case>
-							<situation>poor-signal</situation>
-							<action>Store-Music-Under-Each-User-ID-In-Memory</action>
+							<situation>authorised-users</situation>
+							<action>Display-Data</action>
 						</case>
 						<case>
-							<situation>high-quality-signal</situation>
-							<action>Store-Music-Under-Each-User-ID-On-Server</action>
+							<situation>stranger</situation>
+							<action>Refrain-from-Displaying-Data</action>
 						</case>
 					</situation-dependencies>
 				</context>
@@ -192,16 +192,12 @@
 							<situation>network-failure</situation>
 							<action>Report-Owner</action>
 						</case>
-						<case>
-							<situation>low-battery</situation>
-							<action>Report-Owner</action>
-						</case>
 					</situation-dependencies>
 				</context>
 			</case>
 		</rule>
 		<rule>
-			<rule-name>Be-Accountable</rule-name>
+			<rule-name>Be-Prudent</rule-name>
 			<device-type>Actuators</device-type>
 			<case>
 				<device>Smart-Speaker</device>
@@ -209,54 +205,16 @@
 					<situation-dependencies>
 						<case>
 							<situation>few-requests</situation>
-							<action>Execute-Requests-Subsequently</action>
+							<action>Execute-Prioritised-Requests</action>
 						</case>
 						<case>
 							<situation>multiple-requests</situation>
-							<action>Execte-Prioritised-Requests</action>
+							<action>Execte-Requests-Subsequently</action>
 						</case>
 					</situation-dependencies>
 				</context>
 			</case>
 		</rule>
-		<rule>
-			<rule-name>Uphold-Trust</rule-name>
-			<device-type>Actuators</device-type>
-			<case>
-				<device>Smart-Speaker</device>
-				<context>
-					<situation-dependencies>
-						<case>
-							<situation>playing-music</situation>
-							<action>Keep-Playing-Music<until>User-Stops</until></action>
-						</case>
-						<case>
-							<situation>stranger</situation>
-							<action>Do-Not-Respond</action>
-						</case>
-					</situation-dependencies>
-				</context>
-			</case>
-		</rule>	
-		<rule>
-			<rule-name>Be-Patient</rule-name>
-			<device-type>Actuators</device-type>
-			<case>
-				<device>Smart-Speaker</device>
-				<context>
-					<situation-dependencies>
-						<case>
-							<situation>playing-music</situation>
-							<action>Keep-Playing-Music<until>User-Stops</until></action>
-						</case>
-						<case>
-							<situation>telling-jokes</situation>
-							<action>Keep-Telling-Jokes<until>User-Stops</until></action>
-						</case>
-					</situation-dependencies>
-				</context>
-			</case>
-		</rule>	
 	</obligation-rules>
 	<prohibition-rule id="R3">
 		<rule>
