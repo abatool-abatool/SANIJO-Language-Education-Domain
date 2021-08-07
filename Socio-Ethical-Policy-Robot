@@ -89,11 +89,11 @@
 					<situation-dependencies>
 						<case>
 							<situation>crowded</situation>
-							<action>Display-Message</action>
+							<action>Alert-On-Waste-Using-Text</action>             
 						</case>
 						<case>
 							<situation>noisy</situation>
-							<action>Display-Message</action>             
+							<action>Alert-On-Waste-Using-Text</action>             
 						</case>
 						<case>
 							<situation>quiet</situation>
@@ -122,7 +122,7 @@
 						</case>
 						<case>
 							<situation>outdoor-location</situation>
-							<action>Ask-Question -Using-Voice</action>
+							<action>Ask-Question-Using-Voice</action>
 						</case>
 					</situation-dependencies>
 				</context>
@@ -174,12 +174,12 @@
 				<context>
 					<situation-dependencies>
 						<case>
-							<situation>poor-signal</situation>
-							<action>Store-Data-Under-Each-User-ID-In-Memory</action>
+							<situation>authorised-users</situation>
+							<action>Display-Data</action>
 						</case>
 						<case>
-							<situation>high-quality-signal</situation>
-							<action>Store-Data-Under-Each-User-ID-On-Server</action>
+							<situation>stranger</situation>
+							<action>Refrain-from-Displaying-Data</action>
 						</case>
 					</situation-dependencies>
 				</context>
@@ -205,62 +205,24 @@
 			</case>
 		</rule>
 		<rule>
-			<rule-name>Be-Accountable</rule-name>
+			<rule-name>Be-Prudent</rule-name>
 			<device-type>Actuators</device-type>
 			<case>
 				<device>Smart-Robot</device>
 				<context>
 					<situation-dependencies>
 						<case>
-							<situation>few-requests</situation>
-							<action>Execute-Requests-Subsequently</action>
+							<situation>crowded</situation>
+							<action>Find-Appropriate-Route</action>
 						</case>
 						<case>
-							<situation>multiple-requests</situation>
-							<action>Execte-Prioritised-Requests</action>
+							<situation>vacant</situation>
+							<action>Move<along>Normal-Route</along></action>
 						</case>
 					</situation-dependencies>
 				</context>
 			</case>
 		</rule>
-		<rule>
-			<rule-name>Uphold-Trust</rule-name>
-			<device-type>Actuators</device-type>
-			<case>
-				<device>Smart-Robot</device>
-				<context>
-					<situation-dependencies>
-						<case>
-							<situation>Interacting</situation>
-							<action>Keep-Communicating<until>User-Stops</until></action>
-						</case>
-						<case>
-							<situation>stranger</situation>
-							<action>Do-Not-Respond</action>
-						</case>
-					</situation-dependencies>
-				</context>
-			</case>
-		</rule>	
-		<rule>
-			<rule-name>Be-Patient</rule-name>
-			<device-type>Actuators</device-type>
-			<case>
-				<device>Smart-Robot</device>
-				<context>
-					<situation-dependencies>
-						<case>
-							<situation>communicating-user</situation>
-							<action>Keep-Communicating<until>User-Stops</until></action>
-						</case>
-						<case>
-							<situation>guiding-photo</situation>
-							<action>Keep-Guiding<until>User-Stops</until></action>
-						</case>
-					</situation-dependencies>
-				</context>
-			</case>
-		</rule>	
 	</obligation-rules>
 	<prohibition-rule id="R3">
 		<rule>
