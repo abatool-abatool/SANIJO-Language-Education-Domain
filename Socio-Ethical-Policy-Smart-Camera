@@ -12,11 +12,11 @@
 					<situation-dependencies>
 						<case>
 							<situation>noisy</situation>
-							<action>Display-Photo<with>High-Resolution</with></action>
+							<action>Display-Photo<with>High-Pixel-Resolution</with></action>
 						</case>
 						<case>
 							<situation>quiet</situation>
-							<action>Display-Video</action>
+							<action>Display-Video<with>Average-Pixel-Resolution</with></action>
 						</case>
 					</situation-dependencies>
 				</context>
@@ -32,16 +32,14 @@
 						<case>
 							<situation>crowded</situation>
 							<action-sequence>
-								<action>High-Focus</action>
-								<action>Detect-Face</action>
+								<action>Detect-Face<with>High-Focus</with></action>
 								<action>Approve-Using-Text</action>
 							</action-sequence>
 						</case>
 						<case>
 							<situation>vaccant</situation>
 							<action-sequence>
-								<action>Average-Focus</action>
-								<action>Detect-Face</action>
+								<action>Detect-Face<with>Average-Focus</with></action>
 								<action>Approve-Using-Voice</action>
 							</action-sequence>              
 						</case>
@@ -84,32 +82,28 @@
 						<case>
 							<situation>crowded</situation>
 							<action-sequence>
-								<action>High-Focus</action>
-								<action>Switch-Off-Flash-Light</action>
+								<action>Switch-Off-Flash-Light<with>High-Focus</with></action>
 								<action>Stream-Video</action>
 							</action-sequence>						
 						</case>
 						<case>
 							<situation>noisy</situation>
 							<action-sequence>
-								<action>High-Focus</action>
-								<action>Switch-Off-Flash-Light</action>
+								<action>Switch-Off-Flash-Light<with>High-Focus</with></action>
 								<action>Stream-Video</action>
 							</action-sequence>							
 						</case>
 						<case>
 							<situation>quiet</situation>
 							<action-sequence>
-								<action>Average-Focus</action>
-								<action>Switch-Off-Flash-Light</action>
+								<action>Switch-Off-Flash-Light<with>Average-Focus</with></action>
 								<action>Stream-Video</action>
 							</action-sequence>	
 						</case>
 						<case>
 							<situation>vaccant</situation>
 							<action-sequence>
-								<action>Average-Focus</action>
-								<action>Switch-Off-Flash-Light</action>
+								<action>Switch-Off-Flash-Light<with>Average-Focus</with></action>
 								<action>Stream-Video</action>
 							</action-sequence>	
 						</case>
@@ -129,16 +123,14 @@
 						<case>
 							<situation>crowded</situation>
 							<action-sequence>
-								<action>High-Focus</action>
-								<action>Apply-Video-Manipulation</action>
+								<action>Apply-Video-Manipulation<with>High-Focus</with></action>
 								<action>Capture-Video</action>
 							</action-sequence>						
 						</case>
 						<case>
 							<situation>vaccant</situation>
 							<action-sequence>
-								<action>Average-Focus</action>
-								<action>Apply-Video-Manipulation</action>
+								<action>Apply-Video-Manipulation<with>Average-Focus</with></action>
 								<action>Capture-Video</action>
 							</action-sequence>							
 						</case>
@@ -192,12 +184,12 @@
 				<context>
 					<situation-dependencies>
 						<case>
-							<situation>poor-signal</situation>
-							<action>Store-Data-Under-Each-User-ID-In-Memory</action>
+							<situation>authorised-users</situation>
+							<action>Display-Data</action>
 						</case>
 						<case>
-							<situation>high-quality-signal</situation>
-							<action>Store-Data-Under-Each-User-ID-On-Server</action>
+							<situation>stranger</situation>
+							<action>Refrain-from-Displaying-Data</action>
 						</case>
 					</situation-dependencies>
 				</context>
@@ -218,16 +210,12 @@
 							<situation>network-failure</situation>
 							<action>Report-Owner</action>
 						</case>
-						<case>
-							<situation>low-battery</situation>
-							<action>Report-Owner</action>
-						</case>
 					</situation-dependencies>
 				</context>
 			</case>
 		</rule>
 		<rule>
-			<rule-name>Be-Accountable</rule-name>
+			<rule-name>Be-Prudent</rule-name>
 			<device-type>Actuators</device-type>
 			<case>
 				<device>Smart-Camera</device>
@@ -235,54 +223,16 @@
 					<situation-dependencies>
 						<case>
 							<situation>crowded</situation>
-							<action>Stream-Long</action>
+							<action>Stream-Long<with>High-Focus</with></action>
 						</case>
 						<case>
 							<situation>vaccant</situation>
-							<action>Stream-Short</action>
+							<action>Stream-Short<with>Average-Focus</with></action>
 						</case>
 					</situation-dependencies>
 				</context>
 			</case>
 		</rule>
-		<rule>
-			<rule-name>Uphold-Trust</rule-name>
-			<device-type>Actuators</device-type>
-			<case>
-				<device>Smart-Camera</device>
-				<context>
-					<situation-dependencies>
-						<case>
-							<situation>video-streaming</situation>
-							<action>Keep-Streaming<until>User-Stops</until></action>
-						</case>
-						<case>
-							<situation>stranger</situation>
-							<action>Do-Not-Respond</action>
-						</case>
-					</situation-dependencies>
-				</context>
-			</case>
-		</rule>
-		<rule>
-			<rule-name>Be-Patient</rule-name>
-			<device-type>Actuators</device-type>
-			<case>
-				<device>Smart-Camera</device>
-				<context>
-					<situation-dependencies>
-						<case>
-							<situation>capturing-video</situation>
-							<action>Keep-Capturing<until>User-Stops</until></action>
-						</case>
-						<case>
-							<situation>capturing-photo</situation>
-							<action>Keep-Capturing<until>User-Stops</until></action>
-						</case>
-					</situation-dependencies>
-				</context>
-			</case>
-		</rule>	
 	</obligation-rules>
 	<prohibition-rule id="R3">
 		<rule>
@@ -351,7 +301,7 @@
 					<situation-dependencies>
 						<case>
 							<situation>vacant</situation>
-							<action>Capturing-Irrelevant</action>
+							<action>Capturing-Irrelevant-Photos/Videos</action>
 						</case>
 					</situation-dependencies>
 				</context>
